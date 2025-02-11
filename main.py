@@ -4,8 +4,8 @@ from pyodide.http import open_url
 from pyscript import display
 from js import console
 
-title = "Pandas (and basic DOM manipulation)"
-page_message = "This example loads a remote CSV file into a Pandas dataframe, and displays it."
+title = "Pandas and  DOM manipulation"
+page_message = "This script loads a remote CSV file into a Pandas dataframe, and displays it."
 url = ""
 
 pydom["title#header-title"].html = title
@@ -13,11 +13,12 @@ pydom["a#page-title"].html = title
 pydom["div#page-message"].html = page_message
 pydom["input#txt-url"][0].value = url
 
-def log(message):
+
+#def log(message):
     # log to pandas dev console
-    print(message)
+ #   print(message)
     # log to JS console
-    console.log(message)
+  #  console.log(message)
 
 def loadFromURL(event):
     pydom["div#pandas-output-inner"].html = ""
@@ -27,6 +28,6 @@ def loadFromURL(event):
     df = pd.read_csv(open_url(url))
 
     pydom["div#pandas-output"].style["display"] = "block"
-    pydom["div#pandas-dev-console"].style["display"] = "block"
+    #pydom["div#pandas-dev-console"].style["display"] = "block"
 
     display(df, target="pandas-output-inner", append="False")
